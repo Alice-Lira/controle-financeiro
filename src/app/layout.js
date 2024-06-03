@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
         </div>
         <main>
           <Card />
-          <div className="pt-20 px-2">
+          <div className="pt-20 px-3">
             {children}
           </div>
         </main>
