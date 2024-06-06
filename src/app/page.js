@@ -52,17 +52,17 @@ export default function Home() {
               type="radio" 
               name="options" 
               value="option1" 
-              className="h-4 w-4"
+              className="h-4 w-4 accent-black"
               checked={selectedOption === 'option1'}
               onChange={handeleOptionChange}
             />
-              
             <label className="text-base ">Entrada</label>
+
             <input 
               type="radio" 
               name="options" 
               value="option2" 
-              className="h-4 w-4" 
+              className="h-4 w-4 accent-black" 
               checked={selectedOption === 'option2'}
               onChange={handeleOptionChange}
             />
