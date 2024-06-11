@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <div className="bg-green-900 flex justify-center items-center p-7 relative">
           <header>
-            <h1 className="text-white text-lg font-medium">Controle financeiro</h1>
+            <h1 className="text-white text-lg font-medium ">Controle financeiro</h1>
           </header>
         </div>
         <main>

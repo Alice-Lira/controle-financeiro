@@ -4,7 +4,7 @@ export default function Card() {
             <div className="w-full absolute top-16 z-20 px-3"> 
                 <div className="bg-white p-3 rounded-md flex justify-evenly items-center">
                     <div className="flex flex-col">
-                        <p className="text-base text-gray-500 font-medium">Entradas</p>
+                        <p className="text-sm uppercase text-gray-500 font-medium">Entradas</p>
                         <div className="flex gap-2 pt-2">
                             <span className="font-bold text-lg">R$</span>
                             <span className="font-bold text-lg">1.500</span>
@@ -13,7 +13,7 @@ export default function Card() {
                     </div>
 
                     <div className="flex flex-col ">
-                        <p className="text-base text-gray-500 font-medium">Saídas</p>
+                        <p className="text-sm uppercase text-gray-500 font-medium">Saídas</p>
                         <div className="flex gap-2 pt-2">
                             <span className="font-bold text-lg">R$</span>
                             <span className="font-bold text-lg">1.500</span>
