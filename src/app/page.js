@@ -6,6 +6,9 @@ export default function Home() {
   const [value, setValue] = useState('')
   const [selectedOption, setSelectedOption] = useState('')
   const [itens, setItens] = useState([])
+  const [errorDescription, setErrorDescription] = useState('')
+  const [errorValue, setErrorValue] = useState('')
+  const [errorSelectedOption, setErrorSelectedOption] = useState('')
 
   useEffect(() => {
     const data = localStorage.getItem('itens')
@@ -24,6 +27,29 @@ export default function Home() {
 
   const handleAdd = (event) => {
     event.preventDefault()
+    let errorDescriptionMsg = ''
+    let errorValueMsg = ''
+    let errorSelectedOptionMsg = ''
+    
+    if(description == '' || description == null) {
+      errorDescriptionMsg = '*Campo obrigatório'
+    }
+
+    if(value == '' || value == null) {
+      errorValueMsg = '*Campo obrigatório'
+    }
+
+    if(selectedOption == '' || selectedOption == null) {
+      errorSelectedOptionMsg = '*Campo obrigatório'
+    }
+
+    setErrorDescription(errorDescriptionMsg)
+    setErrorValue(errorValueMsg)
+    setErrorSelectedOption(errorSelectedOptionMsg)
+    if(errorDescriptionMsg != '' || errorValueMsg != '' || errorSelectedOptionMsg != '') {
+      return
+    }
+
     let newItens = [...itens]
     newItens.push({
       name: description,
@@ -51,7 +77,7 @@ export default function Home() {
               value={description}
               onChange={handleInputChangeDescription}
             />
-            
+            {errorDescription && <p className="text-red-600 mt-1 font-medium">{errorDescription}</p>}
           </div>
 
           <div className="flex flex-col">
@@ -62,6 +88,7 @@ export default function Home() {
               value={value}
               onChange={handleInputChangeValue}
             />
+            {errorValue && <p className="text-red-600 mt-1 font-medium">{errorValue}</p>}
           </div>
 
           <div className="flex gap-3 pt-4 items-center">
@@ -84,6 +111,8 @@ export default function Home() {
               onChange={handeleOptionChange}
             />
             <label className="text-base ">Saída</label>
+            {errorSelectedOption && <p className="text-red-600 font-medium">{errorSelectedOption}</p>}
+           
           </div>
           
           <div className="pt-5">
