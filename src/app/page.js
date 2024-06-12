@@ -112,7 +112,7 @@ export default function Home() {
               checked={selectedOption === 'output'}
               onChange={handeleOptionChange}
             />
-            <label className="text-base ">Saída</label>
+            <label className="text-base">Saída</label>
             {errorSelectedOption && <p className="text-red-600 font-medium">{errorSelectedOption}</p>}
            
           </div>
@@ -143,12 +143,13 @@ export default function Home() {
                   </td>
 
                   <td className="px-6 py-4 font-semibold">
-                    {item.value} 
+                    {item.value} R$
                   </td>
 
                   <td className="px-6 py-4">
-                    {item.type == 'input' ? 'Entrada' : 'Saída'}
-                   
+                    <p className={item.type == 'input' ? 'text-green-600' : 'text-red-600'}>
+                      {item.type == 'input' ? 'Entrada' : 'Saída'}
+                    </p>
                   </td>
                 </tr>
               </tbody>
