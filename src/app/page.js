@@ -59,6 +59,9 @@ export default function Home() {
       type: selectedOption
     })
     setItens(newItens)
+    setDescription('')
+    setValue('')
+    setSelectedOption('input')
     localStorage.setItem('itens', JSON.stringify(newItens))
   }
 
