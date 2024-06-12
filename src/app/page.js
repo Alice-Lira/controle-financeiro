@@ -19,10 +19,12 @@ export default function Home() {
 
   const handleInputChangeDescription = (event) => {
     setDescription(event.target.value)
+    setErrorDescription('')
   }
 
   const handleInputChangeValue = (event) => {
     setValue(event.target.value)
+    setErrorValue('')
   }
 
   const handleAdd = (event) => {
@@ -62,7 +64,7 @@ export default function Home() {
 
   const handeleOptionChange = (event) => {
     setSelectedOption(event.target.value)
-    
+    setErrorSelectedOption('')
   }
 
   return (
