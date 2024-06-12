@@ -10,7 +10,7 @@ export default function Card() {
                     <div className="flex flex-col">
                         <div className="flex gap-1 items-center justify-center">
                             <p className="text-sm uppercase text-gray-500 font-medium ">Entradas</p>
-                            <BiChevronUpCircle className="text-green-600"/>
+                            <BiChevronUpCircle className="text-green-600 text-2xl"/>
                         </div>
                         <div className="flex gap-2 pt-2">
                             <span className="font-bold text-lg">R$</span>
@@ -22,7 +22,7 @@ export default function Card() {
                     <div className="flex flex-col ">
                         <div className="flex items-center justify-center gap-1">
                             <p className="text-sm uppercase text-gray-500 font-medium">Saídas</p>
-                            <BiChevronDownCircle className="text-red-600"/>
+                            <BiChevronDownCircle className="text-red-600 text-2xl"/>
                         </div>
 
                         <div className="flex gap-2 pt-2">
