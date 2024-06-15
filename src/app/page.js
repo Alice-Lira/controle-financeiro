@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
+import Card from "./components/card";
 
 export default function Home() {
   const [description, setDescription] = useState('')
@@ -9,6 +10,8 @@ export default function Home() {
   const [errorDescription, setErrorDescription] = useState('')
   const [errorValue, setErrorValue] = useState('')
   const [errorSelectedOption, setErrorSelectedOption] = useState('')
+  const [input, setInput] = useState(0)
+  const [output, setOutput] = useState(0)
 
   useEffect(() => {
     const data = localStorage.getItem('itens')
@@ -16,6 +19,22 @@ export default function Home() {
     const itensParsed = JSON.parse(data) 
     if(itensParsed.length > 0) setItens([...itensParsed])
   }, [])
+
+  useEffect(() =>{
+    let totalInput = 0
+    let totalOutput = 0
+
+    itens.forEach( (item) => {
+      if(item.type == 'input') {
+        totalInput += Number(item.value)
+      }
+      if(item.type == 'output') {
+        totalOutput += Number(item.value)
+      }
+    })
+    setInput(totalInput)
+    setOutput(totalOutput)
+  },[itens])
 
   const handleInputChangeDescription = (event) => {
     setDescription(event.target.value)
@@ -72,6 +91,7 @@ export default function Home() {
 
   return (
     <div>
+      <Card input={input} output={output}/>
       <form>
         <div className="bg-white p-3 flex flex-col rounded-md">
           <div className="flex flex-col">

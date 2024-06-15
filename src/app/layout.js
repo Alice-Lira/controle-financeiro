@@ -19,7 +19,6 @@ export default function RootLayout({ children }) {
           </header>
         </div>
         <main>
-          <Card />
           <div className="pt-20 px-3">
             {children}
           </div>
