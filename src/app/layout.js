@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Card from "./components/card";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +18,7 @@ export default function RootLayout({ children }) {
           </header>
         </div>
         <main>
-          <div className="pt-20 px-3">
+          <div className="pt-20 pb-5 px-3 lg:px-20 xl:px-40">
             {children}
           </div>
         </main>

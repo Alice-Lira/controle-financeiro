@@ -5,7 +5,7 @@ import { BiChevronDownCircle } from "react-icons/bi";
 export default function Card({input, output}) {
     return (
         <div className="w-full absolute top-0 left-0 z-10">
-            <div className="w-full absolute top-16 z-20 px-3"> 
+            <div className="w-full absolute top-16 z-20 px-3 lg:px-20 xl:px-40"> 
                 <div className="bg-white p-3 rounded-md flex justify-evenly items-center">
                     <div className="flex flex-col">
                         <div className="flex gap-1 items-center justify-center">

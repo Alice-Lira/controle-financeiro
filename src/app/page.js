@@ -93,30 +93,32 @@ export default function Home() {
     <div>
       <Card input={input} output={output}/>
       <form>
-        <div className="bg-white p-3 flex flex-col rounded-md">
-          <div className="flex flex-col">
-            <label className="text-base mb-1 font-medium">Descrição</label>
-            <input 
-              className="border-gray-400 border rounded focus:outline-none focus:ring-1 focus:ring-black"
-              type="text"
-              value={description}
-              onChange={handleInputChangeDescription}
-            />
-            {errorDescription && <p className="text-red-600 mt-1 font-medium">{errorDescription}</p>}
+        <div className="bg-white p-3 gap-4 flex flex-col rounded-md">
+          <div className="lg:flex-row gap-3 flex flex-col">
+            <div className="flex flex-col w-full">
+              <label className="text-base mb-1 font-medium">Descrição</label>
+              <input 
+                className="border-gray-400 border rounded focus:outline-none focus:ring-1 focus:ring-black"
+                type="text"
+                value={description}
+                onChange={handleInputChangeDescription}
+              />
+              {errorDescription && <p className="text-red-600 mt-1 font-medium">{errorDescription}</p>}
+            </div>
+
+            <div className="flex flex-col w-full">
+              <label className="text-base mb-1 font-medium">Valor</label>
+              <input 
+                className="border-gray-400 border rounded focus:outline-none focus:ring-1 focus:ring-black"
+                type="number"
+                value={value}
+                onChange={handleInputChangeValue}
+              />
+              {errorValue && <p className="text-red-600 mt-1 font-medium">{errorValue}</p>}
+            </div>
           </div>
 
-          <div className="flex flex-col">
-            <label className="text-base mb-1 mt-3 font-medium">Valor</label>
-            <input 
-              className="border-gray-400 border rounded focus:outline-none focus:ring-1 focus:ring-black"
-              type="number"
-              value={value}
-              onChange={handleInputChangeValue}
-            />
-            {errorValue && <p className="text-red-600 mt-1 font-medium">{errorValue}</p>}
-          </div>
-
-          <div className="flex gap-3 pt-4 items-center">
+          <div className="flex gap-3 items-center">
             <input 
               type="radio" 
               name="input" 
@@ -137,15 +139,14 @@ export default function Home() {
             />
             <label className="text-base">Saída</label>
             {errorSelectedOption && <p className="text-red-600 font-medium">{errorSelectedOption}</p>}
-           
           </div>
-          
-          <div className="pt-5">
+          <div className="flex justify-end">
             <button 
-              className="bg-green-900 text-white px-4 py-3 rounded-lg uppercase text-xs"
+              className="bg-green-900 text-white px-4 py-3 rounded-lg uppercase text-xs w-full md:w-1/3"
               onClick={handleAdd}>
               Adicionar
             </button>
+
           </div>
         </div>
       </form>
