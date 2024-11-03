@@ -4,8 +4,8 @@
 As seguintes ferramentas foram usadas na construção do projeto:
 
 - [Node.js](https://nodejs.org/en/)
-- [Tailwind]([https://www.w3schools.com/css/](https://tailwindcss.com/))
-- [React.js]([https://vuejs.org/](https://react.dev/))
+- [Tailwind](https://tailwindcss.com/)
+- [React.js](https://react.dev/)
 - [git](https://git-scm.com/)
   
 ### Abrir e rodar o projeto
