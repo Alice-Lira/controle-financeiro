@@ -12,9 +12,11 @@ export default function Home() {
   const [errorValue, setErrorValue] = useState('')
   const [errorSelectedOption, setErrorSelectedOption] = useState('')
   const [errorCategory, setErrorCategory] = useState('')
+  const [errorDate, setErrorDate] = useState('')
   const [input, setInput] = useState(0)
   const [output, setOutput] = useState(0)
   const [selectCategory, setSelectCategory] = useState('')
+  const [date, setDate] = useState('')
 
   useEffect(() => {
     const data = localStorage.getItem('itens')
@@ -58,7 +60,8 @@ export default function Home() {
     let errorDescriptionMsg = ''
     let errorValueMsg = ''
     let errorSelectedOptionMsg = ''
-    let errorCategory = ''
+    let errorCategoryMsg = ''
+    let errorDateMsg = ''
 
     if (description == '' || description == null) {
       errorDescriptionMsg = '*Campo obrigatório'
@@ -73,26 +76,36 @@ export default function Home() {
     }
 
     if (selectCategory == '' || selectCategory == null) {
-      errorCategory = '*Campo obrigatório'
+      errorCategoryMsg = '*Campo obrigatório'
     }
+
+    if (date == '' || date == null) {
+      errorDateMsg = '*Campo obrigatório'
+    }
+
     setErrorDescription(errorDescriptionMsg)
     setErrorValue(errorValueMsg)
+    setErrorCategory(errorCategoryMsg)
     setErrorSelectedOption(errorSelectedOptionMsg)
-    if (errorDescriptionMsg != '' || errorValueMsg != '' || errorSelectedOptionMsg != '' || errorCategory != '') {
+    setErrorDate(errorDateMsg)
+    if (errorDescriptionMsg != '' || errorValueMsg != '' || errorSelectedOptionMsg != '' || errorCategory != '' || errorDateMsg) {
       return
     }
 
     let newItens = [...itens]
+    const [year, month, day] = date.split('-');
     newItens.push({
       name: description,
       value,
       type: selectedOption,
       category: selectCategory,
-      date: new Date()
+      date: `${day}/${month}/${year}`
     })
     setItens(newItens)
     setDescription('')
     setValue('')
+    setDate('')
+    setSelectCategory('')
     setSelectedOption('input')
     localStorage.setItem('itens', JSON.stringify(newItens))
   }
@@ -101,11 +114,15 @@ export default function Home() {
     setSelectedOption(event.target.value)
     setErrorSelectedOption('')
   }
+  const handleDateChange = (event) => {
+    setDate(event.target.value)
+    setErrorDate('')
+  }
 
   const handleDelete = (indexToDelete) => {
     const newData = itens.filter((_, index) => index !== indexToDelete)
-    console.log('cheguei aqui')
     setItens(newData)
+    localStorage.setItem('itens', JSON.stringify(newData))
   }
 
   return (
@@ -122,7 +139,7 @@ export default function Home() {
                 value={description}
                 onChange={handleInputChangeDescription}
               />
-              {errorDescription && <p className="text-red-600 mt-1 font-medium">{errorDescription}</p>}
+              {errorDescription && <p className="text-red-600 mt-1 font-medium text-sm">{errorDescription}</p>}
             </div>
 
             <div className="flex flex-col w-full">
@@ -133,7 +150,7 @@ export default function Home() {
                 value={value}
                 onChange={handleInputChangeValue}
               />
-              {errorValue && <p className="text-red-600 mt-1 font-medium">{errorValue}</p>}
+              {errorValue && <p className="text-red-600 mt-1 font-medium text-sm">{errorValue}</p>}
             </div>
 
             <div className="flex flex-col w-full">
@@ -149,7 +166,17 @@ export default function Home() {
                 <option value="Aluguel">Aluguel</option>
                 <option value="Pessoal">Pessoal</option>
               </select>
-              {errorCategory && <p className="text-red-600 mt-1 font-medium">{errorCategory}</p>}
+              {errorCategory && <p className="text-red-600 mt-1 font-medium text-sm">{errorCategory}</p>}
+            </div>
+            <div className="flex flex-col">
+              <label className="text-base mb-1 font-medium">Data</label>
+              <input
+                className="border-gray-400 border rounded focus:outline-none focus:ring-1 focus:ring-black"
+                type="date"
+                value={date}
+                onChange={handleDateChange}
+              />
+              {errorDate && <p className="text-red-600 font-medium text-sm mt-1">{errorDate}</p>}
             </div>
           </div>
 
@@ -163,7 +190,6 @@ export default function Home() {
               onChange={handeleOptionChange}
             />
             <label className="text-base">Entrada</label>
-
             <input
               type="radio"
               name="output"
@@ -173,7 +199,7 @@ export default function Home() {
               onChange={handeleOptionChange}
             />
             <label className="text-base">Saída</label>
-            {errorSelectedOption && <p className="text-red-600 font-medium">{errorSelectedOption}</p>}
+            {errorSelectedOption && <p className="text-red-600 font-medium text-sm ">{errorSelectedOption}</p>}
           </div>
           <div className="flex justify-end">
             <button
@@ -215,7 +241,7 @@ export default function Home() {
                 </td>
 
                 <td className="px-6 py-4 text-gray-900 flex items-center justify-between">
-                  {new Date(item.date).toLocaleDateString()}
+                  {item.date}
                   <button onClick={() => handleDelete(index)}>
                     <RiDeleteBin6Line className="text-red-600" />
                   </button>
